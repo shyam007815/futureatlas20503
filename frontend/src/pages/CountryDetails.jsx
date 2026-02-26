@@ -76,12 +76,12 @@ function CountryDetails() {
       d.military,
       d.gsi,
     ])
-    
+
     const csvContent = [
       headers.join(','),
       ...rows.map(row => row.join(','))
     ].join('\n')
-    
+
     const blob = new Blob([csvContent], { type: 'text/csv' })
     const url = window.URL.createObjectURL(blob)
     const a = document.createElement('a')
@@ -105,16 +105,16 @@ function CountryDetails() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div className="mb-6">
-        <h1 className="text-3xl font-bold text-gray-900 mb-4">Country Details</h1>
-        
-        <div className="bg-white p-4 rounded-lg shadow">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+        <h1 className="text-3xl font-bold text-slate-900 mb-4">Country Details</h1>
+
+        <div className="bg-white p-4 rounded-lg shadow border border-slate-200">
+          <label className="block text-sm font-medium text-slate-700 mb-2">
             Select Country
           </label>
           <select
             value={selectedCountry}
             onChange={handleCountryChange}
-            className="w-full md:w-1/3 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full md:w-1/3 px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
           >
             {countries.map((country) => (
               <option key={country.iso3} value={country.iso3}>
@@ -127,12 +127,12 @@ function CountryDetails() {
 
       {/* Insights Summary */}
       {insights && (
-        <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg shadow-lg p-6 mb-8">
-          <h2 className="text-2xl font-bold mb-4">AI-Generated Insights</h2>
+        <div className="bg-gradient-to-r from-slate-100 to-blue-50 rounded-lg shadow-lg p-6 mb-8 border border-blue-100">
+          <h2 className="text-2xl font-bold mb-4 text-slate-900">AI-Generated Insights</h2>
           <div className="grid md:grid-cols-2 gap-6 mb-4">
             <div>
-              <h3 className="font-semibold mb-2">Current Status (2023)</h3>
-              <ul className="space-y-1 text-sm">
+              <h3 className="font-semibold mb-2 text-slate-800">Current Status (2023)</h3>
+              <ul className="space-y-1 text-sm text-slate-600">
                 <li>GDP: ${formatNumber(insights.current.gdp)}B</li>
                 <li>Population: {formatNumber(insights.current.population)}M</li>
                 <li>Military: ${formatNumber(insights.current.military)}B</li>
@@ -140,8 +140,8 @@ function CountryDetails() {
               </ul>
             </div>
             <div>
-              <h3 className="font-semibold mb-2">Projected (2050)</h3>
-              <ul className="space-y-1 text-sm">
+              <h3 className="font-semibold mb-2 text-slate-800">Projected (2050)</h3>
+              <ul className="space-y-1 text-sm text-slate-600">
                 <li>GDP: ${formatNumber(insights.future.gdp)}B</li>
                 <li>Population: {formatNumber(insights.future.population)}M</li>
                 <li>Military: ${formatNumber(insights.future.military)}B</li>
@@ -151,8 +151,8 @@ function CountryDetails() {
             </div>
           </div>
           <div className="mt-4">
-            <h3 className="font-semibold mb-2">Key Insights</h3>
-            <p className="text-sm text-gray-700 leading-relaxed">{insights.summary}</p>
+            <h3 className="font-semibold mb-2 text-slate-800">Key Insights</h3>
+            <p className="text-sm text-slate-700 leading-relaxed">{insights.summary}</p>
           </div>
         </div>
       )}
